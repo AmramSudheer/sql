@@ -1,0 +1,17 @@
+select gender,avg(salary) over (partition by gender)
+from employee_demographics as dem
+join employee_salary as sal
+on dem.employee_id = sal.employee_id
+;
+
+select dem.first_name,dem.last_name,concat(dem.first_name,' ',dem.last_name)as full_name,avg(salary) over (partition by gender)
+from employee_demographics as dem
+join employee_salary as sal
+on dem.employee_id = sal.employee_id
+;
+
+select dem.first_name,dem.last_name,concat(dem.first_name,' ',dem.last_name)as full_name,avg(salary) over (partition by gender order by salary desc) as row_num
+from employee_demographics as dem
+join employee_salary as sal
+on dem.employee_id = sal.employee_id
+;
