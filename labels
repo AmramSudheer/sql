@@ -1,0 +1,7 @@
+select first_name, last_name,'old' as label
+from employee_demographics where age > 60 and gender = 'male'
+union select first_name,last_name,'highly paid' as label 
+from employee_salary where salary>50000;
+
+
+
